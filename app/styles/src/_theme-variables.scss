@@ -1,0 +1,28 @@
+//Widths & Heights
+$page-min-height: 100%;
+$layout-drawer-width: 180px;
+
+//Colors & Backgrounds
+$layout-drawer-bg-color: rgba(84, 68, 255,.7);
+$color-primary-dark: #424242;
+$color-accent: $palette-pink-A200;
+
+$text-color-primary: #fff;
+$text-color-dark: unquote("rgba(#{$color-black}, 0.87)");
+$text-link-color: unquote("rgb(#{$color-accent})");
+
+//Fonts
+$headings_font: 'Rubik', 'Helvetica', 'Arial', sans-serif;
+$preferred_font: 'Roboto Mono', monospace, sans-serif;
+
+h1{
+  font-size: 3.5em;
+}
+
+@media screen and (min-width: $grid-tablet-breakpoint){
+  h1 { font-size: 4em; }
+}
+
+@media screen and (min-width: $grid-desktop-breakpoint){
+  h1 { font-size: 6em; }
+}

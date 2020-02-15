@@ -1,0 +1,16 @@
+.mdl-layout {
+  footer{
+    padding: 0 16px;
+    color:$text-color-primary;
+    background-color: transparent;
+    z-index: 10;
+  }
+
+  .mdl-mini-footer__link-list{
+    margin-left: 1em;
+    li {
+      font-size: 9px;
+      line-height: 13px;
+    }
+  }
+}

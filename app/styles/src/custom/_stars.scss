@@ -1,0 +1,295 @@
+html {
+  height: 100%;
+  background: url("#{$image_path}/bg-star-tile.png") repeat;
+  overflow: hidden;
+}
+
+@keyframes fly {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  69% {
+    transform: translate(5px, 5px);
+  }
+  100% {
+    transform: translate(7px, -10px);
+  }
+}
+
+.ship {
+  position: relative;
+  display: block;
+  width: 592px;
+  left: 0;
+  overflow: visible;
+  animation: fly 3s infinite alternate ease-in-out;
+}
+
+.spaceship {
+  display: block;
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  top: 0;
+  left: 100px;
+  will-change: transform;
+  background: url("#{$image_path}/ship.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 10;
+}
+
+.thrusters {
+  display: none;
+  position: absolute;
+  width: 189px;
+  height: 126px;
+  top: 73px;
+  right: 413px;
+  //background: url("#{$image_path}/thrusters-off.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+@keyframes engines {
+  0% {
+    opacity: 0;
+  }
+  36.36% {
+    opacity: 1;
+  }
+  63.63% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.engine-on {
+  @extend .thrusters;
+  //background: url("#{$image_path}/thrusters-off-2.png");
+  opacity: 0;
+  animation: engines 1s infinite alternate ease-in-out;
+}
+
+@media screen and (max-width: $grid-tablet-breakpoint) {
+  .ship {
+    width: 100%;
+    z-index: 99;
+  }
+
+  .spaceship {
+    width: 80%;
+    left: 15px;
+  }
+}
+
+
+@keyframes planetRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flares
+{
+  0% {
+    filter: drop-shadow(1px 1px 15px #feec85);
+    }
+  50% {
+    filter: drop-shadow(2px 2px 12px #ec760c);
+  }
+  100% {
+    filter: drop-shadow(3px 5px 16px #451b0e);
+  }
+}
+
+@keyframes suck
+{
+  0% {
+    filter: drop-shadow(1px 1px 15px #000000);
+  }
+  50% {
+    filter: drop-shadow(2px 2px 12px #1B0018);
+  }
+  100% {
+    filter: drop-shadow(3px 5px 16px #1C1900);
+  }
+}
+
+@keyframes orbitplanet {
+  0% { z-index:6; transform: rotateY(0deg); }
+  49% { z-index:6; }
+  50% { z-index:-6; }
+  99% { z-index:-6; }
+  100%   { z-index:6; transform: rotateY(360deg); }
+}
+
+@keyframes shadow {
+  0% { background-position: 130% 0%; }
+  33%{ background-position: 50% 0%; }
+  55% { background-position: 0% 0%; }
+  80%{ background-position: -50% 0%; }
+  100%{ background-position: -50% 0%; }
+}
+
+/* Keep planet image flat */
+@keyframes anti-spin {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(-360deg); }
+}
+
+.orbit {
+  overflow: hidden;
+}
+
+.orbit--home {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  .moon {
+    position: relative;
+    bottom: -333px;
+    right: -5%;
+    width: 610px;
+    height: 610px;
+    border: none;
+    outline: 1px solid transparent;
+    background: url("#{$image_path}/moon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: drop-shadow(5px 5px 5px #222);
+    animation: planetRotate 300s infinite linear;
+    backface-visibility: hidden;
+  }
+}
+
+@media screen and (max-width: $grid-tablet-breakpoint) {
+  .orbit--home {
+    position: relative;
+    .moon {
+      bottom: inherit;
+    }
+  }
+}
+
+.orbit--skills {
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow: visible;
+  z-index: -1;
+
+  .orbit__control {
+    position:relative;
+    margin: 0 auto;
+    display:block;
+    perspective: 700px;
+    perspective-origin: 60% 50%;
+  }
+
+  .star-spin {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: -300px;
+    right: -5%;
+    will-change: transform;
+    animation: planetRotate 100s infinite linear;
+  }
+
+  .sun {
+    position: relative;
+    width: 520px;
+    height: 520px;
+    border: none;
+    outline: 1px solid transparent;
+    background: url("#{$image_path}/sun.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: flares 2s ease-in-out infinite alternate;
+    backface-visibility: hidden;
+    z-index: 1;
+  }
+}
+
+.alien-planet {
+  position: absolute;
+  margin: 70px 0 auto;
+  transform-style: preserve-3d;
+  width: 600px;
+  z-index:6;
+  will-change: transform, z-index;
+  animation: orbitplanet 50s infinite linear;
+  top: 0;
+  height: 0;
+
+  .alien-planet__wrapper {
+      width:60px;
+      height:60px;
+      background-image: url("#{$image_path}/moon.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      animation-iteration-count: infinite;
+      overflow:hidden;
+      will-change: transform;
+      animation: anti-spin 50s infinite linear;
+  }
+
+  .shadow {
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      top: 0px;
+      bottom: 0px;
+      background: transparent url("#{$image_path}/moon-shadow.png") 0% 0% no-repeat;
+      background-size: cover;
+      border-radius: 100%;
+      will-change: background-position;
+      animation: shadow 50s infinite linear;
+  }
+}
+
+.orbit--work {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -1;
+
+  .orbit__control {
+    position:relative;
+    margin: 0 auto;
+    display:block;
+  }
+
+  .star-spin {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+    animation: planetRotate 100s infinite linear;
+  }
+
+  .blackhole {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border: none;
+    outline: 1px solid transparent;
+    background: url("#{$image_path}/blackhole.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: suck 2s ease-in-out infinite alternate;
+    backface-visibility: hidden;
+    z-index: 1;
+  }
+}

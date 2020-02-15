@@ -1,0 +1,15 @@
+.mdl-layout__drawer{
+  background-color: $layout-drawer-bg-color;
+  border: 0;
+  left: inherit;
+  width: $layout-drawer-width;
+
+  .mdl-navigation{
+    .mdl-navigation__link{
+      color: $text-color-primary;
+      &:hover{
+        color: $text-color-dark;
+      }
+    }
+  }
+}

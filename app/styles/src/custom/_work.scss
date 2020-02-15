@@ -1,0 +1,23 @@
+.work-card.mdl-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.22);
+
+  .mdl-card__title {
+    color: #fff;
+    height: 176px;
+  }
+
+  .mdl-card__supporting-text{
+    color:#fff;
+  }
+
+  .mdl-card__menu {
+    color: #fff;
+  }
+}
+
+.work-card--shq{
+  .mdl-card__title {
+    background: url("#{$image_path}/welcome_card.jpg") center / cover;
+  }
+}
