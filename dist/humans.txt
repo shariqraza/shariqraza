@@ -1,0 +1,14 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  <Shariq Raza> -- <Frontend developer> -- <@shariq_raza>
+
+# THANKS
+
+  <Dad> <Mom> <Friends>
+
+# TECHNOLOGY COLOPHON
+
+  Gulp, WSK, MDL, HTML5, CSS3, Javascript, Angular.
